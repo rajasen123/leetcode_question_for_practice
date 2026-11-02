@@ -1,7 +1,6 @@
 class Solution:
     def search(self, nums: list[int], target: int) -> int:
         l = 0
-        nums = list(set(nums))
         r = len(nums) - 1
         
         while l <= r:
@@ -9,6 +8,11 @@ class Solution:
             
             if nums[m] == target:
                 return True
+
+            if nums[l] == nums[m] == nums[r]:
+                l += 1
+                r -= 1
+                continue
             if nums[l] <= nums[m]:
                 if nums[l] <= target < nums[m]:
                     r = m - 1
